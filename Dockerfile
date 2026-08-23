@@ -1,7 +1,7 @@
 FROM alpine:latest
 
-# Устанавливаем Caddy и инструменты для скачивания Xray
-RUN apk add --no-cache curl unzip caddy
+# Устанавливаем Nginx, curl и unzip
+RUN apk add --no-cache nginx curl unzip
 
 # Скачиваем и устанавливаем Xray
 RUN curl -L -o /tmp/xray.zip https://github.com/XTLS/Xray-core/releases/latest/download/Xray-linux-64.zip && \
@@ -11,7 +11,7 @@ RUN curl -L -o /tmp/xray.zip https://github.com/XTLS/Xray-core/releases/latest/d
 
 # Копируем наши файлы
 COPY config.json /etc/xray/config.json
-COPY Caddyfile /etc/caddy/Caddyfile
+COPY nginx.conf /etc/nginx/nginx.conf
 COPY start.sh /start.sh
 
 RUN chmod +x /start.sh
