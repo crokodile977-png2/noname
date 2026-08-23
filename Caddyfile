@@ -1,7 +1,0 @@
-http://0.0.0.0:{$PORT} {
-    # Отвечаем текстом при заходе через браузер
-    respond / "✅ VPN OK" 200
-    
-    # Проксируем трафик VPN на внутренний порт Xray
-    reverse_proxy /mysecretvpn* localhost:8081
-}
