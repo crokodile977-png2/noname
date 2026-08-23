@@ -2,6 +2,6 @@
     # Отвечаем текстом при заходе на сайт через браузер
     respond / "✅ VPN сервер работает и готов к подключению!" 200
     
-    # Весь трафик по пути /mysecretvpn отправляем на внутренний порт Xray (8080)
-    reverse_proxy /mysecretvpn* localhost:8080
+    # Весь трафик по пути /mysecretvpn отправляем на внутренний порт Xray (теперь 8081)
+    reverse_proxy /mysecretvpn* localhost:8081
 }
