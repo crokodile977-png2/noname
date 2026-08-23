@@ -1,3 +1,2 @@
-:{$PORT}
-respond / "VPN OK" 200
-reverse_proxy /mysecretvpn* localhost:8081
+0.0.0.0:{$PORT}
+respond "VPN OK" 200
