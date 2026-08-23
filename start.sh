@@ -1,6 +1,7 @@
 #!/bin/sh
-# Заменяем порт 8080 на тот, который выдаст Railway ($PORT)
-sed -i "s/8080/${PORT}/g" /etc/xray/config.json
+# Запускаем Xray на внутреннем порту 8080 в фоновом режиме (&)
+xray run -c /etc/xray/config.json &
 
-# Запускаем Xray (exec передает управление процессу, чтобы он корректно работал в контейнере)
-exec xray run -c /etc/xray/config.json
+# Запускаем Caddy, который примет внешний трафик на порту Railway ($PORT)
+# exec делает его главным процессом контейнера, чтобы Railway видел, что он жив
+exec caddy run --config /etc/caddy/Caddyfile
