@@ -1,0 +1,9 @@
+:{$PORT} {
+    # Показываем простое сообщение при заходе на сайт через браузер
+    respond / "✅ VPN сервер работает и готов к подключению!" 200 {
+        header Content-Type text/plain; charset=utf-8
+    }
+
+    # Если запрос идет по пути /mysecretvpn, передаем его нашему Xray на порт 8080
+    reverse_proxy /mysecretvpn* localhost:8080
+}
